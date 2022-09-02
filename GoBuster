@@ -1,0 +1,94 @@
+							GOBUSTER
+
+
+Alguns dos exemplos mostram como usar essa opção.
+
+    gobuster dir -u https://www.geeksforgeeks.org/
+    gobuster dir -u https://www.webscantest.com
+    gobuster dir -u 192.168.21.154
+
+Especificação de lista de palavras
+para fornecer esta lista de palavras, você precisa digitar a opção “-w”, seguida do caminho da lista de palavras onde está localizada.
+
+	gobuster dir -u https://www.geeksforgeeks.org/ -w /usr/share/wordlists/big.txt
+
+Enumerando Arquivos
+Gobuster nos permite usar a opção “-x” seguida pelas extensões de arquivo que você gostaria de pesquisar.
+
+	gobuster dir -u https://www.geeksforgeeks.com w /usr/share/wordlists/big.txt -x php, html, htm
+
+Obtendo o caminho completo para um diretório ou arquivo
+A opção “-e” é usada para completar a impressão de URL ao extrair qualquer arquivo oculto ou diretórios ocultos
+
+	gobuster dir -e -u geeksforgeeks.org -w /usr/share/wordlists/dirb/common.txt –wildcard
+
+Ocultar código de status
+Usar a opção -n no modo “sem status” imprime a saída dos resultados sem apresentar o código de status.
+
+    gobuster dir -u geeksforgeeks.org -w /usr/share/wordlists/dirb/common.txt -n –wildcard
+
+Desativar banner
+Usando a opção -q, podemos desabilitar o sinalizador para ocultar dados extras.
+
+	gobuster dir -u geeksforgeeks.org -w /usr/share/wordlists/dirb/common.txt -q –wildcard
+
+Defina o número de threads
+O uso da opção -t permite que o número de parâmetros de encadeamento sejam implementados enquanto os nomes de subdomínio ou diretórios de força bruta são aplicados.	
+
+	gobuster dns -d geeksforgeeks.org -t 100 -w /usr/share/wordlists/dirb/common.txt –wildcard
+
+Obtenha IPs de subdomínio
+Usar a opção -i permite o parâmetro IP, que deve mostrar os IPs dos subdomínios selecionados.
+
+   	gobuster dns -d geeksforgeeks.org -t 100 -w /usr/share/wordlists/dirb/common.txt -i –wildcard
+
+Tempo limite
+Usar a opção –timeout permite o parâmetro de tempo limite para requests HTTP e 5 segundos é o limite de tempo padrão para a solicitação HTTP. 
+
+    	gobuster dir –timeout 5s -u geeksforgeeks.org -t 100 -w /usr/share/wordlists/dirb/common.txt –wildcard
+
+Anexando Barra para Frente
+Estou usando a opção -f aqui para acrescentar a barra enquanto faço um ataque de força bruta no URL de destino.
+
+    	gobuster dir -u geeksforgeeks.org -w /usr/share/wordlists/dirb/common.txt -f –wildcard
+
+Enumeração de diretório com lista de extensão específica
+podemos usar o parâmetro -X desta varredura. Este parâmetro permite o nome da extensão do arquivo e, em seguida, explora os arquivos de extensão fornecidos no servidor ou computador da vítima.
+
+    	gobuster dir -u geeksforgeeks.org -w /usr/share/wordlists/dirb/common.txt -x .php –wildcard
+
+Seguir Redirecionar
+Usar as opções -r permite redirecionar os parâmetros, redirecionar as requests HTTP para outra e alterar o código de status de um diretório ou arquivo.
+
+   	gobuster dir -u geeksforgeeks.org -w /usr/share/wordlists/dirb/common.txt -q –wildcard
+
+    	gobuster dir -u geeksforgeeks.org -r -w /usr/share/wordlists/dirb/common.txt -q –wildcard
+
+AUTORIZAÇÃO HTTP (-u nome de usuário: senha)
+para evitar esse tipo de autenticação com a ajuda do Gobuster, utilizamos o comando abaixo:
+
+    	gobuster dir -u http://testphp.vulnweb.com/login.php -w /usr/share/wordlists/dirb/common.txt -U test -P test –wildcard
+
+Força de processamento de força bruta
+a opção –wildcard para permitir que os parâmetros continuem o ataque mesmo se houver algum Domínio curinga.
+
+    	gobuster dir -u geeksforgeeks.org -w /usr/share/wordlists/dirb/common.txt –wildcard
+
+Ocultar Processo de Extração
+O uso da opção -z cobre o processo de obtenção de nomes de subdomínios enquanto faz ataques de força bruta.
+
+    	gobuster dns -d geeksforgeeks.org -t 100 -w /usr/share/wordlists/dirb/common.txt -z –wildcard
+
+Extraindo registros CNAME
+Usar a opção –cn ativa o parâmetro CNAME Records dos subdomínios obtidos e seus registros CNAME.
+
+    	gobuster dns -d geeksforgeeks.org -t 100 -w /usr/share/wordlists/dirb/common.txt -c –wildcard
+    	
+URL proxy
+Usar a opção –p permite que o URL do proxy seja usado para todas as requests; por padrão, ele funciona na porta 1080. Como você pode ver, ao examinar o IP de rede da vítima no navegador da web, ele colocou um “Erro de acesso proibido”, o que significa que esta página da web está operando de trás para frente por algum proxy.
+
+    	gobuster dir -p 'https: //18.172.30: 3128' -u 'http://18.192.172.30/' -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt –wildcard
+
+
+
+	
